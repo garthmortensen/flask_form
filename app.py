@@ -5,10 +5,20 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    """render default page
+
+    :return: main page
+    :rtype: object
+    """
     return render_template('index.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
+    """insert values into database.
+
+    :return: status message
+    :rtype: string
+    """
     name = request.form['name']
     email = request.form['email']
 
