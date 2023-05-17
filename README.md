@@ -54,3 +54,8 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 (base)
 ```
 
+Next, open the `conf.py` file and add `extensions = ['sphinx.ext.autodoc']` to enable the autodoc extension.
+
+Add sphinx-styled docstrings.
+
+Finally, `sphinx-build -b html ./sourcedir ./builddir`
