@@ -1,0 +1,72 @@
+/* dracula/darcula */
+
+/* General styles */
+body {
+  background-color: #282a36;
+  color: #f8f8f2;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #bd93f9;
+}
+
+/* Header styles */
+header {
+  background-color: #44475a;
+  padding: 10px;
+}
+
+h1 {
+  color: #f8f8f2;
+}
+
+/* Navigation styles */
+nav {
+  background-color: #44475a;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #f8f8f2;
+  text-decoration: none;
+}
+
+/* Content styles */
+.container {
+  margin: 20px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+/* Code block styles */
+pre {
+  background-color: #282a36;
+  color: #f8f8f2;
+  padding: 10px;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+/* Links */
+a {
+  color: #bd93f9;
+}
+
+a:hover {
+  color: #ff79c6;
+}
+
