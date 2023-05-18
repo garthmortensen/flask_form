@@ -11,22 +11,36 @@
   <h1>Submit Form to SQLite3</h1>
 
   <form action="/submit" method="POST">
+
     <div class="form-group">
-      <label for="age">Age:</label>
-      <input type="number" class="form-control" id="age" name="age" required>
+      <label for="name">name:</label>
+      <select class="form-control" id="name" name="name" required>
+        <option value="">Select a name</option>
+        <option value="Pony">Alice</option>
+        <option value="Goat">Bob</option>
+        <option value="Lumi">Carol</option>
+        <option value="Lumi">Dan</option>
+        <option value="Lumi">Eve</option>
+      </select>
     </div>
 
     <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" name="name" required>
+      <label for="unique_id">unique_id:</label>
+      <input type="number" class="form-control" id="unique_id" name="unique_id" required>
     </div>
 
     <div class="form-group">
-      <label for="timestamp">Timestamp:</label>
+      <label for="comment">comment:</label>
+      <input type="text" class="form-control" id="comment" name="comment" required>
+    </div>
+
+    <div class="form-group">
+      <label for="timestamp">timestamp:</label>
       <input type="datetime-local" class="form-control" id="timestamp" name="timestamp" required>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
+
   </form>
 </div>
 
@@ -45,6 +59,7 @@
     
     // set the value of the input element
     document.getElementById("timestamp").value = datetime;
+
   </script>
 
 </body>
