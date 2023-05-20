@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Display</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Event handler for the calendar year dropdown change
+            $("#calendar-year").on("change", function() {
+                var selectedYearId = $(this).val();
+
+                // Hide all table rows initially
+                $(".data-row").hide();
+
+                // Show only the rows with the selected year ID
+                $(".data-row[data-year='" + selectedYearId + "']").show();
+            });
+
+            // Event handler for the "Add Ingredient" button
+            $("#add-ingredient").on("click", function() {
+                var ingredient = $("#ingredient").val();
+                var description = $("#ingredient-description").val();
+                var seller = $("#ingredient-seller").val();
+                var season = $("#ingredient-season").val();
+                var yearId = $("#ingredient-year").val();
+
+                // Perform validation (e.g., check if required fields are filled)
+
+                // Create a new row HTML and append it to the ingredient table
+                var newRow = "<tr class='data-row' data-year='" + yearId + "'>" +
+                                "<td>" + ingredient + "</td>" +
+                                "<td>" + description + "</td>" +
+                                "<td>" + seller + "</td>" +
+                                "<td>" + season + "</td>" +
+                            "</tr>";
+                $("#ingredient-table tbody").append(newRow);
+
+                // Clear the input fields
+                $("#ingredient").val("");
+                $("#ingredient-description").val("");
+                $("#ingredient-seller").val("");
+                $("#ingredient-season").val("");
+                $("#ingredient-year").val("");
+            });
+
+            // Event handler for the "Add Menu Item" button
+            $("#add-menu-item").on("click", function() {
+                var buyer = $("#buyer").val();
+                var description = $("#menu-item-description").val();
+                var step = $("#step").val();
+                var season = $("#menu-item-season").val();
+                var yearId = $("#menu-item-year").val();
+
+                // Perform validation (e.g., check if required fields are filled)
+
+                // Create a new row HTML and append it to the menu item table
+                var newRow = "<tr class='data-row' data-year='" + yearId + "'>" +
+                                "<td>" + buyer + "</td>" +
+                                "<td>" + description + "</td>" +
+                                "<td>" + step + "</td>" +
+                                "<td>" + season + "</td>" +
+                            "</tr>";
+                $("#menu-item-table tbody").append(newRow);
+
+                // Clear the input fields
+                $("#buyer").val("");
+                $("#menu-item-description").val("");
+                $("#step").val("");
+                $("#menu-item-season").val("");
+                $("#menu-item-year").val("");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Calendar Year Data</h1>
+        <select id="calendar-year" class="form-control">
+            <option value="">Select a year</option>
+            {% for row in calendar_year_data %}
+            <option value="{{ row[0] }}">{{ row[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <h1>Ingredient Data</h1>
+        <table id="ingredient-table" class="table">
+            <thead>
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Description</th>
+                    <th>Seller</th>
+                    <th>Season</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in ingredient_data %}
+                <tr class="data-row" data-year="{{ row[5] }}">
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Add Ingredient</h2>
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" id="ingredient" class="form-control" placeholder="Ingredient" required>
+                </div>
+                <div class="col">
+                    <input type="text" id="ingredient-description" class="form-control" placeholder="Description" required>
+                </div>
+                <div class="col">
+                    <input type="text" id="ingredient-seller" class="form-control" placeholder="Seller" required>
+                </div>
+                <div class="col">
+                    <input type="text" id="ingredient-season" class="form-control" placeholder="Season" required>
+                </div>
+                <div class="col">
+                    <select id="ingredient-year" class="form-control" required>
+                        <option value="">Select a year</option>
+                        {% for row in calendar_year_data %}
+                        <option value="{{ row[0] }}">{{ row[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <button type="button" id="add-ingredient" class="btn btn-primary">Add Ingredient</button>
+                </div>
+            </div>
+        </form>
+
+        <h1>Menu Item Data</h1>
+        <table id="menu-item-table" class="table">
+            <thead>
+                <tr>
+                    <th>Buyer</th>
+                    <th>Description</th>
+                    <th>Step</th>
+                    <th>Season</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in menu_item_data %}
+                <tr class="data-row" data-year="{{ row[5] }}">
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Add Menu Item</h2>
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" id="buyer" class="form-control" placeholder="Buyer" required>
+                </div>
+                <div class="col">
+                    <input type="text" id="menu-item-description" class="form-control" placeholder="Description" required>
+                </div>
+                <div class="col">
+                    <input type="text" id="step" class="form-control" placeholder="Step" required>
+                </div>
+                <div class="col">
+                    <input type="text" id="menu-item-season" class="form-control" placeholder="Season" required>
+                </div>
+                <div class="col">
+                    <select id="menu-item-year" class="form-control" required>
+                        <option value="">Select a year</option>
+                        {% for row in calendar_year_data %}
+                        <option value="{{ row[0] }}">{{ row[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <button type="button" id="add-menu-item" class="btn btn-primary">Add Menu Item</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

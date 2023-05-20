@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Form to SQLite3</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+  <h1>Submit Form to SQLite3</h1>
+
+  <form action="/submit" method="POST">
+
+    <div class="form-group">
+      <label for="name">name:</label>
+      <select class="form-control" id="name" name="name" required>
+        <option value="">Select a name</option>
+        <option value="Pony">Alice</option>
+        <option value="Goat">Bob</option>
+        <option value="Lumi">Carol</option>
+        <option value="Lumi">Dan</option>
+        <option value="Lumi">Eve</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="unique_id">unique_id:</label>
+      <input type="number" class="form-control" id="unique_id" name="unique_id" required>
+    </div>
+
+    <div class="form-group">
+      <label for="comment">comment:</label>
+      <input type="text" class="form-control" id="comment" name="comment" required>
+    </div>
+
+    <div class="form-group">
+      <label for="timestamp">timestamp:</label>
+      <input type="datetime-local" class="form-control" id="timestamp" name="timestamp" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+</div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // get the current date and time
+    var now = new Date();
+    
+    // format the date and time as a string for the datetime-local input
+    var year = now.getFullYear();
+    var month = String(now.getMonth() + 1).padStart(2, '0');  // Month is zero-based
+    var day = String(now.getDate()).padStart(2, '0');
+    var hour = String(now.getHours()).padStart(2, '0');
+    var minute = String(now.getMinutes()).padStart(2, '0');
+    var datetime = year + '-' + month + '-' + day + 'T' + hour + ':' + minute;
+    
+    // set the value of the input element
+    document.getElementById("timestamp").value = datetime;
+
+  </script>
+
+</body>
+</html>

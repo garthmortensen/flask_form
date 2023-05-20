@@ -1,0 +1,48 @@
+/* Custom styles for Dracula theme */
+body {
+    background-color: #282a36;
+    color: #f8f8f2;
+    font-family: Consolas, Monaco, 'Courier New', monospace;
+    font-size: 14px;
+    margin: 0;
+}
+
+.container {
+    background-color: #282a36;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #bd93f9;
+}
+
+table {
+    color: #f8f8f2;
+}
+
+th, td {
+    padding: 8px;
+}
+
+tr.data-row {
+    display: none;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"], select {
+    background-color: #44475a;
+    border: 1px solid #6272a4;
+    color: #f8f8f2;
+    padding: 5px;
+}
+
+button {
+    background-color: #bd93f9;
+    border: none;
+    color: #f8f8f2;
+    cursor: pointer;
+    padding: 5px 10px;
+}
