@@ -10,6 +10,8 @@ $ python app.py
 
 then visit in browser `http://localhost:5000`.
 
+![sample](./images/sample.png)
+
 ## sphinx
 
 ```bash
